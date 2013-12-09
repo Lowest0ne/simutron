@@ -1,0 +1,12 @@
+# Ignore scons files
+.sconsign.dblite
+
+# Ignore shared library files
+*.so
+*.os
+
+# Ignore object files
+*.o
+
+# Ignore simutron binary
+/simutron
