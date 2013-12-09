@@ -12,6 +12,8 @@ int main( void )
   std::cout << "Welcome to Simutron\n\n";
   Simutron::City city("Boston");
 
+  city.addGrowable( Simutron::Growable( 5 ) );
+
 
   bool running = true;
   while ( running )

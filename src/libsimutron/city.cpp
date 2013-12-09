@@ -1,6 +1,8 @@
 #include "city.h"
 #include "zone.h"
 
+#include <stdexcept>
+
 namespace Simutron
 {
   City::City( void )
@@ -55,7 +57,18 @@ namespace Simutron
 
   void City::grow( void )
   {
-    m_population += m_free_zones * 10;
+    m_population += m_free_zones * bestGrowable().capacity();
     m_free_zones = 0;
+  }
+
+  void City::addGrowable( const Growable& growable )
+  {
+    m_growables.push_back( growable );
+  }
+
+  const Growable& City::bestGrowable( void ) const
+  {
+    if ( m_growables.size() == 0 ) throw std::out_of_range( "City has nothing");
+    return m_growables.front();
   }
 }

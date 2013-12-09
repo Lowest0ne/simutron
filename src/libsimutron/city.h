@@ -3,8 +3,10 @@
 
 #include <string>
 #include <cstdint>
+#include <vector>
 
 #include "budget.h"
+#include "growable.h"
 
 namespace Simutron
 {
@@ -22,13 +24,20 @@ namespace Simutron
     std::uint32_t m_free_zones;
 
     Budget m_budget;
+    std::vector< Growable > m_growables;
 
     private:
     /**
     * @fn void grow( void )
-    * @brief calculate the new population of the City
+    * @brief Calculate the new population of the City
     */
     void grow( void );
+    /**
+    * @fn const Growable& bestGrowable( void ) const
+    * @brief Select the best growable to build
+    * @throw std::out_of_range
+    */
+    const Growable& bestGrowable( void ) const;
 
     public:
     /**
@@ -75,6 +84,13 @@ namespace Simutron
     * @brief Update the City's members
     */
     void update( void );
+    /**
+    * @fn void addGrowable( const Growable& growable )
+    * @brief Add a Growable for the city to choose from when it groes
+    * @param growable The Growable to add
+    */
+    void addGrowable( const Growable& );
+
   };
 }
 

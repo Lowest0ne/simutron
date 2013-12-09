@@ -3,7 +3,9 @@
 
 #include "city.h"
 #include "budget.h"
+#include "buyable.h"
 #include "zone.h"
+#include "growable.h"
 
 /**
 * @namespace Simutron
