@@ -49,6 +49,13 @@ namespace Simutron
 
   void City::update( void )
   {
+    grow();
     m_budget.update( *this );
+  }
+
+  void City::grow( void )
+  {
+    m_population += m_free_zones * 10;
+    m_free_zones = 0;
   }
 }

@@ -23,6 +23,13 @@ namespace Simutron
 
     Budget m_budget;
 
+    private:
+    /**
+    * @fn void grow( void )
+    * @brief calculate the new population of the City
+    */
+    void grow( void );
+
     public:
     /**
     * @fn City( void )
