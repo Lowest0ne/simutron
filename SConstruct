@@ -1,7 +1,7 @@
 import os
 
 def env():
-  return Environment( CXXFLAGS='-std=c++11 -Wall -Wextra -pedantic -Werror' )
+  return Environment( CXXFLAGS='-g -std=c++11 -Wall -Wextra -pedantic -Werror' )
 
 lib_env = env()
 lib_env.SharedLibrary('./lib/simutron', Glob( 'src/libsimutron/*.cpp' ))

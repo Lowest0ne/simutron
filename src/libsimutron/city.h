@@ -8,6 +8,8 @@
 
 namespace Simutron
 {
+  class Zone;
+
   class City
   {
     private:
@@ -27,7 +29,7 @@ namespace Simutron
     std::uint32_t      population( void ) const;
     std::uint32_t      free_zones( void ) const;
 
-    void zone( const std::uint32_t );
+    void zone( const Zone& );
 
     const Budget& budget( void ) const;
 

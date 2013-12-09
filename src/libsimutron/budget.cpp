@@ -1,5 +1,6 @@
 #include "budget.h"
 #include "city.h"
+#include "buyable.h"
 
 namespace Simutron
 {
@@ -39,16 +40,16 @@ namespace Simutron
     m_treasury += city.population() * ( m_tax_rate / 100.0 );
   }
 
-  bool Budget::can_afford( const std::int32_t amount ) const
+  bool Budget::can_afford( const Buyable& buyable ) const
   {
-    return amount <= treasury();
+    return buyable.cost() <= treasury();
   }
 
-  bool Budget::purchace( const std::uint32_t amount )
+  bool Budget::purchace( const Buyable& buyable )
   {
-    if ( can_afford( amount ) )
+    if ( can_afford( buyable ) )
     {
-      m_treasury -= amount;
+      m_treasury -= buyable.cost();
       return true;
     }
     else

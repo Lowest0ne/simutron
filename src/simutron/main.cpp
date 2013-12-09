@@ -28,7 +28,8 @@ int main( void )
       {
         std::uint32_t amount = 0;
         std::cin >> amount;
-        city.zone( amount );
+        Simutron::Zone zone( amount );
+        city.zone( zone );
         break;
       }
     }

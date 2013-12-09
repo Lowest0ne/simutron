@@ -6,6 +6,7 @@
 namespace Simutron
 {
   class City;
+  class Buyable;
 
   class Budget
   {
@@ -26,8 +27,8 @@ namespace Simutron
 
     void update( const City& );
 
-    bool can_afford( const std::int32_t ) const;
-    bool   purchace( const std::uint32_t );
+    bool can_afford( const Buyable& ) const;
+    bool   purchace( const Buyable& );
 
   };
 }

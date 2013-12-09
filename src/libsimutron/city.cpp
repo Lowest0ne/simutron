@@ -1,4 +1,5 @@
 #include "city.h"
+#include "zone.h"
 
 namespace Simutron
 {
@@ -40,11 +41,10 @@ namespace Simutron
     return m_budget;
   }
 
-  void City::zone( const uint32_t amount )
+  void City::zone( const Zone& zone )
   {
-    const std::int32_t zone_cost = 10;
-    if ( m_budget.purchace( amount * zone_cost ) )
-      m_free_zones += amount;
+    if ( m_budget.purchace( zone ) )
+      m_free_zones += zone.size();
   }
 
   void City::update( void )
