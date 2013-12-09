@@ -24,6 +24,6 @@ namespace Simutron
 
   std::int32_t Zone::cost( void ) const
   {
-    return m_cost * m_size;
+    return Buyable::cost() * m_size;
   }
 }

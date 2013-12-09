@@ -10,4 +10,10 @@ namespace Simutron
   Buyable::~Buyable( void )
   {
   }
+
+  std::int32_t Buyable::cost( void  ) const
+  {
+    return m_cost;
+  }
+
 }

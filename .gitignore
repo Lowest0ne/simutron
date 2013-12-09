@@ -10,3 +10,6 @@
 
 # Ignore simutron binary
 /simutron
+
+# Ignore documentation
+/docs/
