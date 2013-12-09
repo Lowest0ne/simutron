@@ -38,4 +38,22 @@ namespace Simutron
   {
     m_treasury += city.population() * ( m_tax_rate / 100.0 );
   }
+
+  bool Budget::can_afford( const std::int32_t amount ) const
+  {
+    return amount <= treasury();
+  }
+
+  bool Budget::purchace( const std::uint32_t amount )
+  {
+    if ( can_afford( amount ) )
+    {
+      m_treasury -= amount;
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 }

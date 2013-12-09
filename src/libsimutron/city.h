@@ -13,6 +13,7 @@ namespace Simutron
     private:
     std::string   m_name;
     std::uint32_t m_population;
+    std::uint32_t m_free_zones;
 
     Budget m_budget;
 
@@ -24,6 +25,9 @@ namespace Simutron
 
     const std::string&       name( void ) const;
     std::uint32_t      population( void ) const;
+    std::uint32_t      free_zones( void ) const;
+
+    void zone( const std::uint32_t );
 
     const Budget& budget( void ) const;
 

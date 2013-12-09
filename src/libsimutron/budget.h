@@ -26,6 +26,9 @@ namespace Simutron
 
     void update( const City& );
 
+    bool can_afford( const std::int32_t ) const;
+    bool   purchace( const std::uint32_t );
+
   };
 }
 

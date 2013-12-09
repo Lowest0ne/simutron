@@ -19,11 +19,18 @@ int main( void )
     std::cout << city << std::endl;
 
     char choice;
-    std::cin >> choice; std::cin.ignore( 80, '\n' );
+    std::cin >> choice;
 
     switch ( choice )
     {
       case 'q': running = false; break;
+      case 'z':
+      {
+        std::uint32_t amount = 0;
+        std::cin >> amount;
+        city.zone( amount );
+        break;
+      }
     }
 
     city.update();
@@ -43,6 +50,8 @@ std::ostream& operator<<( std::ostream& out, const Simutron::City& city )
   format( out, 6, city.population() );
   format( out, w, "Treasury" );
   format( out, 6, city.budget().treasury() );
+  format( out, w, "Free Zones" );
+  format( out, 6, city.free_zones() );
 
   return out << '\n' << line << "\n\n";
 }
