@@ -11,17 +11,20 @@ namespace Simutron
   {
     private:
     std::uint16_t m_tax_rate;
+    std::int32_t  m_treasury;
 
     public:
     Budget( void );
-    Budget( const double );
+    Budget( const std::uint16_t, const std::int32_t );
 
     virtual ~Budget( void );
 
     std::uint16_t taxRate( void ) const;
     void          taxRate( const std::uint16_t );
 
-    std::int32_t revenue( const City& ) const;
+    std::int32_t  treasury( void ) const;
+
+    void update( const City& );
 
   };
 }

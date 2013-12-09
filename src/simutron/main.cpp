@@ -42,7 +42,7 @@ std::ostream& operator<<( std::ostream& out, const Simutron::City& city )
   format( out, w, "Population" );
   format( out, 6, city.population() );
   format( out, w, "Treasury" );
-  format( out, 6, city.treasury() );
+  format( out, 6, city.budget().treasury() );
 
   return out << '\n' << line << "\n\n";
 }

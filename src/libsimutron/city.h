@@ -13,7 +13,6 @@ namespace Simutron
     private:
     std::string   m_name;
     std::uint32_t m_population;
-    std::int32_t  m_treasury;
 
     Budget m_budget;
 
@@ -25,7 +24,8 @@ namespace Simutron
 
     const std::string&       name( void ) const;
     std::uint32_t      population( void ) const;
-    std::int32_t         treasury( void ) const;
+
+    const Budget& budget( void ) const;
 
     void update( void );
   };
