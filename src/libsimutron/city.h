@@ -57,17 +57,17 @@ namespace Simutron
     * @fn const std::string& name( void ) const
     * @return The name of the City
     */
-    const std::string&       name( void ) const;
+    const std::string& name( void ) const;
     /**
     * @fn std::uint32_t population( void ) const
     * @return The population of the City
     */
-    std::uint32_t      population( void ) const;
+    std::uint32_t population( void ) const;
     /**
     * @fn std::uint32_t free_zones( void ) const
     * @return The available zones the City contains
     */
-    std::uint32_t      free_zones( void ) const;
+    std::uint32_t free_zones( void ) const;
     /**
     * @fn const Budget& budget( void ) const
     * @return The City's Budget
