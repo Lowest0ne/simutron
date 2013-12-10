@@ -1,71 +1,11 @@
-#include "simutron.h"
-#include <iostream>
-#include <iomanip>
-#include <string>
-
-template <typename T> void format( std::ostream&, const size_t, const T& );
-std::ostream& operator<<( std::ostream&, const Simutron::City& );
+#include "window.h"
 
 
-int main( void )
+int main ( int argc, char **argv )
 {
-  std::cout << "Welcome to Simutron\n\n";
-  Simutron::City city("Boston");
+  Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(argc, argv, "my.game.simutron");
 
-  city.addGrowable( Simutron::Growable( 5 ) );
+  Simutron::Window window;
 
-
-  bool running = true;
-  while ( running )
-  {
-    std::cout << city << std::endl;
-
-    char choice;
-    std::cin >> choice;
-
-    switch ( choice )
-    {
-      case 'q': running = false; break;
-      case 'z':
-      {
-        std::uint32_t amount = 0;
-        std::cin >> amount;
-        Simutron::Zone zone( amount );
-        city.zone( zone );
-        break;
-      }
-    }
-
-    city.update();
-  }
-  return 0;
-}
-
-std::ostream& operator<<( std::ostream& out, const Simutron::City& city )
-{
-  static const std::string line( 80, '*' );
-  static const size_t w = 18;
-
-  out << line << "\nCity Name: " << city.name() << '\n' << line;
-  out << std::endl;
-
-  format( out, w, "Population" );
-  format( out, 6, city.population() );
-  format( out, w, "Treasury" );
-  format( out, 6, city.budget().treasury() );
-  format( out, w, "Free Zones" );
-  format( out, 6, city.freeZones() );
-  out << std::endl;
-  format( out, w, "Max Population" );
-  format( out, 6, city.maxPopulation() );
-  format( out, w, "Growth Potential" );
-  format( out, 6, city.growthPotential() );
-
-  return out << '\n' << line << "\n\n";
-}
-
-template <typename T>
-void format( std::ostream& out, const size_t w, const T& value )
-{
-  out << std::setw( w ) << value;
+  return app->run( window );
 }
