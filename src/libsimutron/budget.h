@@ -59,11 +59,11 @@ namespace Simutron
     void update( const City& );
 
     /**
-    * @fn bool can_afford( const Buyable& buyable ) const
+    * @fn bool canAfford( const Buyable& buyable ) const
     * @brief Determine if the Budget can afford the Buyable
     * @return true if the Budget can afford the buyable
     */
-    bool can_afford( const Buyable& ) const;
+    bool canAfford( const Buyable& ) const;
     /**
     * @fn bool purchace( const Buyable& buyable )
     * @brief Detract the Buyable's cost from treasury if it is affordable

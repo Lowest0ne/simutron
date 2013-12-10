@@ -37,17 +37,17 @@ namespace Simutron
 
   void Budget::update( const City& city )
   {
-    m_treasury += city.population() * ( m_tax_rate / 100.0 );
+    m_treasury += ( city.population() * m_tax_rate ) / 100.0;
   }
 
-  bool Budget::can_afford( const Buyable& buyable ) const
+  bool Budget::canAfford( const Buyable& buyable ) const
   {
     return buyable.cost() <= treasury();
   }
 
   bool Budget::purchace( const Buyable& buyable )
   {
-    if ( can_afford( buyable ) )
+    if ( canAfford( buyable ) )
     {
       m_treasury -= buyable.cost();
       return true;
