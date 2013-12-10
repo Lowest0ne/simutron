@@ -44,7 +44,7 @@ int main( void )
 std::ostream& operator<<( std::ostream& out, const Simutron::City& city )
 {
   static const std::string line( 80, '*' );
-  static const size_t w = 16;
+  static const size_t w = 18;
 
   out << line << "\nCity Name: " << city.name() << '\n' << line;
   out << std::endl;
@@ -54,7 +54,12 @@ std::ostream& operator<<( std::ostream& out, const Simutron::City& city )
   format( out, w, "Treasury" );
   format( out, 6, city.budget().treasury() );
   format( out, w, "Free Zones" );
-  format( out, 6, city.free_zones() );
+  format( out, 6, city.freeZones() );
+  out << std::endl;
+  format( out, w, "Max Population" );
+  format( out, 6, city.maxPopulation() );
+  format( out, w, "Growth Potential" );
+  format( out, 6, city.growthPotential() );
 
   return out << '\n' << line << "\n\n";
 }

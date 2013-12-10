@@ -1,4 +1,5 @@
 #include "growable.h"
+#include "city.h"
 
 namespace Simutron
 {
@@ -14,5 +15,10 @@ namespace Simutron
   std::uint32_t Growable::capacity( void ) const
   {
     return m_capacity;
+  }
+
+  bool Growable::buildableBy( const City& city ) const
+  {
+    return capacity() <= city.growthPotential();
   }
 }

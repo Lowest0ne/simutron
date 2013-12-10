@@ -9,6 +9,7 @@ namespace Simutron
     : m_name( "No name" )
     , m_population( 0 )
     , m_free_zones( 0 )
+    , m_max_population( 100 )
   {
   }
 
@@ -16,6 +17,7 @@ namespace Simutron
     : m_name( name )
     , m_population( 0 )
     , m_free_zones( 0 )
+    , m_max_population( 100 )
   {
   }
 
@@ -33,7 +35,7 @@ namespace Simutron
     return m_population;
   }
 
-  std::uint32_t City::free_zones( void ) const
+  std::uint32_t City::freeZones( void ) const
   {
     return m_free_zones;
   }
@@ -57,8 +59,16 @@ namespace Simutron
 
   void City::grow( void )
   {
-    m_population += m_free_zones * bestGrowable().capacity();
-    m_free_zones = 0;
+    const auto growable = bestGrowable();
+    if ( growable == m_growables.end() )    return;
+    if ( !growable->buildableBy( *this ) ) return;
+
+    auto build_amount = growthPotential() / growable->capacity();
+
+    if ( freeZones() < build_amount ) build_amount = freeZones();
+
+    m_population += build_amount * growable->capacity();
+    m_free_zones -= build_amount;
   }
 
   void City::addGrowable( const Growable& growable )
@@ -66,9 +76,18 @@ namespace Simutron
     m_growables.push_back( growable );
   }
 
-  const Growable& City::bestGrowable( void ) const
+  const City::growable_iterator City::bestGrowable( void ) const
   {
-    if ( m_growables.size() == 0 ) throw std::out_of_range( "City has nothing");
-    return m_growables.front();
+    return m_growables.cbegin();
+  }
+
+  std::uint32_t City::maxPopulation( void ) const
+  {
+    return m_max_population;
+  }
+
+  std::uint32_t City::growthPotential( void ) const
+  {
+    return maxPopulation() - population();
   }
 }

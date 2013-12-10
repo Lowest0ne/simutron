@@ -22,9 +22,14 @@ namespace Simutron
     std::string   m_name;
     std::uint32_t m_population;
     std::uint32_t m_free_zones;
+    std::uint32_t m_max_population;
 
     Budget m_budget;
-    std::vector< Growable > m_growables;
+
+    using growable_container = std::vector< Growable >;
+    using growable_iterator  = growable_container::const_iterator;
+
+    growable_container m_growables;
 
     private:
     /**
@@ -34,10 +39,9 @@ namespace Simutron
     void grow( void );
     /**
     * @fn const Growable& bestGrowable( void ) const
-    * @brief Select the best growable to build
-    * @throw std::out_of_range
+    * @return An iterator to the best growable, or end() if one was not found
     */
-    const Growable& bestGrowable( void ) const;
+    const growable_iterator bestGrowable( void ) const;
 
     public:
     /**
@@ -64,10 +68,10 @@ namespace Simutron
     */
     std::uint32_t population( void ) const;
     /**
-    * @fn std::uint32_t free_zones( void ) const
+    * @fn std::uint32_t freeZones( void ) const
     * @return The available zones the City contains
     */
-    std::uint32_t free_zones( void ) const;
+    std::uint32_t freeZones( void ) const;
     /**
     * @fn const Budget& budget( void ) const
     * @return The City's Budget
@@ -90,6 +94,16 @@ namespace Simutron
     * @param growable The Growable to add
     */
     void addGrowable( const Growable& );
+    /**
+    * @fn void maxPopulation( void ) const
+    * @return The maximum population the city can maintain
+    */
+    std::uint32_t maxPopulation( void ) const;
+    /**
+    * @fn growthPotential( void ) const
+    * @return The population the City can grow by
+    */
+    std::uint32_t growthPotential( void ) const;
 
   };
 }

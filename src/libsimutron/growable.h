@@ -3,13 +3,15 @@
 
 #include <cstdint>
 
+#include "buildable.h"
+
 namespace Simutron
 {
   /**
   * @class Growable
   * @brief Base class for all things growable
   */
-  class Growable
+  class Growable : public Buildable
   {
     private:
 
@@ -22,14 +24,17 @@ namespace Simutron
     * @param capacity The capacity of the Growable
     */
     Growable( const std::uint32_t );
-
     virtual ~Growable( void );
+
+    bool buildableBy( const City& ) const override;
 
     /**
     * @fn std::uint32_t capacity( void ) const
     * @return The capacity of the growable
     */
     std::uint32_t capacity( void ) const;
+
+
   };
 }
 
