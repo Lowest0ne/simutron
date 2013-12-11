@@ -40,6 +40,11 @@ namespace Simutron
     return m_free_zones;
   }
 
+  Budget& City::budget( void )
+  {
+    return m_budget;
+  }
+
   const Budget& City::budget( void ) const
   {
     return m_budget;
@@ -59,14 +64,16 @@ namespace Simutron
 
   void City::grow( void )
   {
+    // Find the best growable
     const auto growable = bestGrowable();
-    if ( growable == m_growables.end() )    return;
+    if ( growable == m_growables.end() )   return;
     if ( !growable->buildableBy( *this ) ) return;
 
+    // Build as many as possible
     auto build_amount = growthPotential() / growable->capacity();
-
     if ( freeZones() < build_amount ) build_amount = freeZones();
 
+    // Update variables
     m_population += build_amount * growable->capacity();
     m_free_zones -= build_amount;
   }

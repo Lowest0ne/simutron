@@ -7,6 +7,9 @@
 
 #include "button.h"
 
+
+#include "budget_gtkmm.h"
+
 #include "simutron.h"
 
 namespace Simutron
@@ -18,6 +21,9 @@ namespace Simutron
     Button m_button;
     Gtk::Label m_label;
     Gtk::Box m_box;
+
+
+    Simutron::Gui::Budget m_budget_view;
 
     protected:
     void printName( void );
