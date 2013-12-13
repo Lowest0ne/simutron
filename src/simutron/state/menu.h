@@ -5,7 +5,7 @@
 
 #include <gtkmm/button.h>
 
-namespace Simutron
+namespace Gui
 {
   class App;
 
@@ -13,6 +13,10 @@ namespace Simutron
   {
     class Manager;
 
+    /**
+    * @class Menu
+    * @brief The main menu state controller
+    */
     class Menu : public State
     {
       private:
@@ -22,9 +26,17 @@ namespace Simutron
       virtual ~Menu( void );
 
       protected:
+      /**
+      * @fn    void on_button( void )
+      * @brief A proof of concept action, switches Manager to the Play state
+      */
       void on_button( void );
 
       public:
+      /**
+      * @fn     static Menu& instance( App&, Manager& )
+      * @return The one and only menu instance
+      */
       static Menu& instance( App&, Manager& );
 
       void init( void );

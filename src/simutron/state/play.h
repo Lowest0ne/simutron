@@ -3,7 +3,7 @@
 
 #include "state.h"
 
-namespace Simutron
+namespace Gui
 {
   class App;
 
@@ -12,6 +12,10 @@ namespace Simutron
 
     class Manager;
 
+    /**
+    * @class Play
+    * @brief The playing state controller.
+    */
     class Play : public State
     {
       private:
@@ -19,6 +23,10 @@ namespace Simutron
       virtual ~Play( void );
 
       public:
+      /**
+      * @fn     static Play& instance( App&, Manager& )
+      * @return The one and only play instance
+      */
       static Play& instance( App&, Manager& );
 
       void init( void );

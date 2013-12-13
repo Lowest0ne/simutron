@@ -8,7 +8,12 @@
 #include <gtkmm/layout.h>
 #include <gtkmm/statusbar.h>
 
-namespace Simutron
+
+/**
+* @namespace Gui
+* @brief     Proivde a namespace for the Gtk gui
+*/
+namespace Gui
 {
   /**
   * @class App

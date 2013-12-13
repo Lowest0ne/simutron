@@ -1,6 +1,6 @@
 #include "state.h"
 
-namespace Simutron
+namespace Gui
 {
   namespace State
   {
