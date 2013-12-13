@@ -1,3 +1,5 @@
+#include "state.h"
+
 #include "manager.h"
 #include "menu.h"
 

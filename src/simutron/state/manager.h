@@ -3,14 +3,15 @@
 
 #include <stack>
 
-#include "state.h"
-
 namespace Simutron
 {
   class App;
 
+
   namespace State
   {
+    class State;
+
     class Manager
     {
       private:
