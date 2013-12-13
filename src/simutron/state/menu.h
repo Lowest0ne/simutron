@@ -11,19 +11,24 @@ namespace Simutron
 
   namespace State
   {
+    class Manager;
+
     class Menu : public State
     {
       private:
       Gtk::Button m_button; // this should be a "play" button
 
-      Menu( App& );
+      Menu( App&, Manager& );
       virtual ~Menu( void );
 
       protected:
       void on_button( void );
 
       public:
-      static Menu& instance( App& );
+      static Menu& instance( App&, Manager& );
+
+      void init( void );
+      void quit( void );
     };
   }
 }

@@ -5,16 +5,24 @@
 
 namespace Simutron
 {
+  class App;
+
   namespace State
   {
+
+    class Manager;
+
     class Play : public State
     {
       private:
-      Play( App& );
+      Play( App&, Manager&  );
       virtual ~Play( void );
 
       public:
-      static Play& instance( App& );
+      static Play& instance( App&, Manager& );
+
+      void init( void );
+      void quit( void );
     };
   }
 }

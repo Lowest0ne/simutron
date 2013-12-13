@@ -1,24 +1,35 @@
 #include "play.h"
+#include "manager.h"
+
 #include "simutron/simutron_app.h"
 
 namespace Simutron
 {
   namespace State
   {
-    Play::Play( App& app )
-      : State( app )
+    Play::Play( App& app, Manager& manager )
+      : State( app, manager )
     {
-      app.statusBar().push( "Welcome to the game" );
     }
 
     Play::~Play( void )
     {
     }
 
-    Play& Play::instance( App& app )
+    Play& Play::instance( App& app, Manager& manager )
     {
-      static Play play( app );
+      static Play play( app, manager );
       return play;
     }
+
+    void Play::init( void )
+    {
+      m_app.statusBar().push( "Welcome to the game" );
+    }
+
+    void Play::quit( void )
+    {
+    }
+
   }
 }
