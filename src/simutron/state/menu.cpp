@@ -19,6 +19,7 @@ namespace App
       m_menu.add( "About" );
 
       m_menu.add( "File", "New", sigc::mem_fun( *this, &Menu::play ) );
+      m_menu.add( "File", "Quit", sigc::mem_fun( m_app, &App::quit ) );
 
       m_app.appendMenu( m_menu );
     }

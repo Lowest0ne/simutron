@@ -38,4 +38,9 @@ namespace App
     for ( auto& item: menu.labels )
       m_menubar.append( item->label );
   }
+
+  void App::quit( void )
+  {
+    m_window.hide();
+  }
 }

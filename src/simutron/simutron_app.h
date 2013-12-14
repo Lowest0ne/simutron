@@ -70,6 +70,11 @@ namespace App
     * @return The Application's status
     */
     Gtk::Statusbar& statusBar( void ){ return m_statusbar; }
+    /**
+    * @fn    void quit( void )
+    * @brief Shutdown the application
+    */
+    void quit( void );
   };
 }
 

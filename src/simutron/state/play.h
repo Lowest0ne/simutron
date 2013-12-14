@@ -22,6 +22,13 @@ namespace App
       Play( App&, Manager&  );
       virtual ~Play( void );
 
+      protected:
+      /**
+      * @fn    void mainMenu( void )
+      * @brief Return the manager to the Menu state
+      */
+      void mainMenu( void );
+
       public:
       /**
       * @fn     static Play& instance( App&, Manager& )
