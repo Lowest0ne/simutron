@@ -5,7 +5,6 @@
 #include <gtkmm/window.h>
 #include <gtkmm/box.h>
 #include <gtkmm/menubar.h>
-#include <gtkmm/layout.h>
 #include <gtkmm/statusbar.h>
 
 
@@ -32,7 +31,7 @@ namespace App
     Gtk::Window                      m_window;
     Gtk::Box                            m_box;
     Gtk::MenuBar                    m_menubar;
-    Gtk::Layout                      m_layout;
+    Gtk::Box                         m_layout;
     Gtk::Statusbar                m_statusbar;
 
     public:
@@ -61,10 +60,10 @@ namespace App
     */
     void appendMenu( Gui::Menu& );
     /**
-    * @fn     Gtk::Layout& layout( void )
+    * @fn     Gtk::Box& layout( void )
     * @return The Application's layout
     */
-    Gtk::Layout&       layout( void ){ return m_layout;    }
+    Gtk::Box& layout( void ){ return m_layout; }
     /**
     * @fn     Gtk::Statusbar& statusBar( void )
     * @return The Application's status
