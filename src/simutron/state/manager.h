@@ -23,12 +23,38 @@ namespace App
       private:
       std::stack< State* > m_states;
 
+      /**
+      * @fn    void quitCurrent( void )
+      * @brief calls quit on and removes the current state
+      */
+      void quitCurrent( void );
+      /**
+      * @fn    void pauseCurrent()
+      * @brief class quit on the current state
+      */
+      void pauseCurrent( void );
+      /**
+      * @fn     bool hasState( void )
+      * @return true if there are pending states
+      */
+      bool hasState( void );
+      /**
+      * @fn    void startState( State& state )
+      * @brief push a new state on the stack and call init
+      */
+      void startState( State& );
+      /**
+      * @fn    void resumeCurrent( void )
+      * @brief Resume the state on the top of the stack
+      */
+      void resumeState( void );
+
       public:
       /**
-      * @fn    Manager( App& app )
-      * @param app The App reference that this belongs to.
+      * @fn    Manager( void )
+      * @breif Construct a State manager
       */
-      Manager( App& );
+      Manager( void );
       virtual ~Manager( void );
 
       /**
@@ -42,7 +68,7 @@ namespace App
       * @brief Switch to a new State, the current State is preserved
       * @param state The new State
       */
-      void   push( State& );
+      void push( State& );
       /**
       * @fn    void pop( void )
       * @brief Remove the current State, initializing a previous State

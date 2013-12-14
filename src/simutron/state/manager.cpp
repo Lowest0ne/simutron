@@ -1,7 +1,5 @@
 #include "state.h"
-
 #include "manager.h"
-#include "menu.h"
 
 #include "simutron/simutron_app.h"
 
@@ -9,9 +7,8 @@ namespace App
 {
   namespace State
   {
-    Manager::Manager( App& app )
+    Manager::Manager( void )
     {
-      push( Menu::instance( app, *this ) );
     }
 
     Manager::~Manager( void )
@@ -20,28 +17,50 @@ namespace App
 
     void Manager::change( State& state )
     {
-      pop();
-      push( state );
+      quitCurrent();
+      startState( state );
     }
 
     void Manager::push( State& state )
     {
-      m_states.push( &state );
-      m_states.top()->init();
+      pauseCurrent();
+      startState( state );
     }
 
     void Manager::pop( void )
     {
-      if ( !m_states.empty() )
+      quitCurrent();
+      resumeState();
+    }
+
+    void Manager::quitCurrent( void )
+    {
+      if ( hasState() )
       {
-        // Release the current state
         m_states.top()->quit();
         m_states.pop();
-
-        // Initialize the last state
-        if ( !m_states.empty() )
-          m_states.top()->init();
       }
+    }
+
+    void Manager::startState( State& state )
+    {
+      m_states.push( &state );
+      state.init();
+    }
+
+    void Manager::pauseCurrent( void )
+    {
+      if ( hasState() ) m_states.top()->quit();
+    }
+
+    void Manager::resumeState( void )
+    {
+      if ( hasState() ) m_states.top()->init();
+    }
+
+    bool Manager::hasState( void )
+    {
+      return !m_states.empty();
     }
   }
 }
