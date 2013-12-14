@@ -2,6 +2,7 @@
 #define SIMUTRON_STATE_PLAY_H
 
 #include "state.h"
+#include "libsimutron/city.h"
 
 namespace App
 {
@@ -19,8 +20,10 @@ namespace App
     class Play : public State
     {
       private:
-      Play( App&, Manager&  );
+      Play( App&, Manager&, const Simutron::City&  );
       virtual ~Play( void );
+
+      Simutron::City m_city;
 
       protected:
       /**
@@ -31,10 +34,11 @@ namespace App
 
       public:
       /**
-      * @fn     static Play& instance( App&, Manager& )
+      * @fn     static Play& instance( App&, Manager&, City& )
+      * @brief  Start playing a city
       * @return The one and only play instance
       */
-      static Play& instance( App&, Manager& );
+      static Play& instance( App&, Manager&, const Simutron::City&);
 
       void init( void );
       void quit( void );

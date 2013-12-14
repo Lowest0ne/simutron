@@ -6,6 +6,8 @@
 
 #include <gtkmm.h>
 
+#include "libsimutron/city.h"
+
 namespace App
 {
   namespace State
@@ -18,7 +20,7 @@ namespace App
       m_menu.add( "Help" );
       m_menu.add( "About" );
 
-      m_menu.add( "File", "New", sigc::mem_fun( *this, &Menu::play ) );
+      m_menu.add( "File", "New", sigc::mem_fun( *this, &Menu::newCity ) );
       m_menu.add( "File", "Quit", sigc::mem_fun( m_app, &App::quit ) );
 
       m_app.appendMenu( m_menu );
@@ -34,9 +36,10 @@ namespace App
       return menu;
     }
 
-    void Menu::play( void )
+    void Menu::newCity( void )
     {
-      m_manager.change( Play::instance( m_app, m_manager ) );
+      Simutron::City new_city( "City name Hardcoded" );
+      m_manager.change( Play::instance( m_app, m_manager, new_city ) );
     }
 
     void Menu::init( void )

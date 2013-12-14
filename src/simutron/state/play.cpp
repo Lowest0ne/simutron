@@ -8,8 +8,9 @@ namespace App
 {
   namespace State
   {
-    Play::Play( App& app, Manager& manager )
+    Play::Play( App& app, Manager& manager, const Simutron::City& city )
       : State( app, manager )
+      , m_city( city )
     {
       m_menu.add( "File", "Main Menu", sigc::mem_fun( *this, &Play::mainMenu ));
       m_menu.add( "File", "Quit", sigc::mem_fun( m_app, &App::quit ) );
@@ -20,15 +21,15 @@ namespace App
     {
     }
 
-    Play& Play::instance( App& app, Manager& manager )
+    Play& Play::instance( App& app, Manager& manager, const Simutron::City& city )
     {
-      static Play play( app, manager );
+      static Play play( app, manager, city );
       return play;
     }
 
     void Play::init( void )
     {
-      m_app.statusBar().push( "Welcome to the game" );
+      m_app.statusBar().push( "Welcome to: " + m_city.name() );
       m_menu.show();
     }
 

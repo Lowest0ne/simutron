@@ -24,10 +24,10 @@ namespace App
 
       protected:
       /**
-      * @fn    void play( void )
-      * @brief A proof of concept action, switches Manager to the Play state
+      * @fn    void newCity( void )
+      * @brief Start a game of simutron with new Simutron::City
       */
-      void play( void );
+      void newCity( void );
 
       public:
       /**
