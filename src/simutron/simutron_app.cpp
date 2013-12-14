@@ -1,4 +1,5 @@
 #include "simutron_app.h"
+#include "simutron/gui/menu.h"
 
 namespace App
 {
@@ -30,5 +31,11 @@ namespace App
   int App::run( void )
   {
     return m_app->run( m_window );
+  }
+
+  void App::appendMenu( Gui::Menu& menu )
+  {
+    for ( auto& item: menu.labels )
+      m_menubar.append( item->label );
   }
 }

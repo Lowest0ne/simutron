@@ -1,6 +1,7 @@
 #ifndef SIMUTRON_STATE_H
 #define SIMUTRON_STATE_H
 
+#include "simutron/gui/menu.h"
 
 namespace App
 {
@@ -32,6 +33,7 @@ namespace App
       protected:
       App&         m_app; //!< Provide information about base gui elements
       Manager& m_manager; //!< Provide ability to change state
+      Gui::Menu   m_menu; //!< Provide ability to set the menu bar
 
       public:
       /**

@@ -12,18 +12,15 @@ namespace App
   {
     Menu::Menu( App& app, Manager& manager )
       : State( app, manager )
-      , m_button( "Click To Play" )
-      , m_label( "File" )
-      , m_item( "New" )
     {
-      m_button.signal_clicked().connect( sigc::mem_fun( *this, &Menu::on_button ) );
-      m_app.layout().add( m_button );
+      m_menu.add( "File" );
+      m_menu.add( "Options" );
+      m_menu.add( "Help" );
+      m_menu.add( "About" );
 
-      m_item.signal_activate().connect( sigc::mem_fun( *this, &Menu::on_button ) );
-      m_label.menu.append( m_item );
-      m_item.show();
+      m_menu.add( "File", "New", sigc::mem_fun( *this, &Menu::play ) );
 
-      m_app.menu().append( m_label.label );
+      m_app.appendMenu( m_menu );
     }
 
     Menu::~Menu( void )
@@ -36,7 +33,7 @@ namespace App
       return menu;
     }
 
-    void Menu::on_button( void )
+    void Menu::play( void )
     {
       m_manager.change( Play::instance( m_app, m_manager ) );
     }
@@ -44,14 +41,12 @@ namespace App
     void Menu::init( void )
     {
       m_app.statusBar().push( "Welcome to Simutron" );
-      m_button.show();
-      m_label.show();
+      m_menu.show();
     }
 
     void Menu::quit( void )
     {
-      m_button.hide();
-      m_label.hide();
+      m_menu.hide();
     }
   }
 

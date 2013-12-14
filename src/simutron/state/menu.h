@@ -3,11 +3,6 @@
 
 #include "state.h"
 
-#include <gtkmm/button.h>
-#include <gtkmm/menuitem.h>
-
-#include "simutron/gui/menu_label.h"
-
 namespace App
 {
   class App;
@@ -23,20 +18,16 @@ namespace App
     class Menu : public State
     {
       private:
-      Gtk::Button m_button; // this should be a "play" button
-
-      Gui::MenuLabel m_label; // This is a menu bar label
-      Gtk::MenuItem  m_item;  // A test item for functionality
 
       Menu( App&, Manager& );
       virtual ~Menu( void );
 
       protected:
       /**
-      * @fn    void on_button( void )
+      * @fn    void play( void )
       * @brief A proof of concept action, switches Manager to the Play state
       */
-      void on_button( void );
+      void play( void );
 
       public:
       /**

@@ -9,6 +9,11 @@
 #include <gtkmm/statusbar.h>
 
 
+namespace Gui
+{
+  struct Menu;
+}
+
 /**
 * @namespace App
 * @brief     Proivde a namespace for the Gtk gui
@@ -51,10 +56,10 @@ namespace App
     int run( void );
 
     /**
-    * @fn     Gtk::MenuBar& menu( void )
-    * @return The Application's menu bar
+    * @fn     void appendMenu( Gui::Menu& menu )
+    * @brief  Add a Gui::Menu to the menu bar
     */
-    Gtk::MenuBar&        menu( void ){ return m_menubar;   }
+    void appendMenu( Gui::Menu& );
     /**
     * @fn     Gtk::Layout& layout( void )
     * @return The Application's layout
