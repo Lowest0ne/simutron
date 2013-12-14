@@ -10,13 +10,13 @@
 
 
 /**
-* @namespace Gui
+* @namespace App
 * @brief     Proivde a namespace for the Gtk gui
 */
-namespace Gui
+namespace App
 {
   /**
-  * @class App
+  * @class App::App
   * @brief The entry point to graphical simutron.
   *        Provides window and basic layout.
   */

@@ -4,8 +4,10 @@
 #include "state.h"
 
 #include <gtkmm/button.h>
+#include <gtkmm/menuitem.h>
+#include <gtkmm/menu.h>
 
-namespace Gui
+namespace App
 {
   class App;
 
@@ -21,6 +23,9 @@ namespace Gui
     {
       private:
       Gtk::Button m_button; // this should be a "play" button
+
+      Gtk::MenuItem m_menu; // the menu's menu bar
+      Gtk::Menu item;       // menu's go into menu items
 
       Menu( App&, Manager& );
       virtual ~Menu( void );

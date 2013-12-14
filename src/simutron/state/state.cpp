@@ -1,6 +1,6 @@
 #include "state.h"
 
-namespace Gui
+namespace App
 {
   namespace State
   {

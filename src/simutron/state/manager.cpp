@@ -5,7 +5,7 @@
 
 #include "simutron/simutron_app.h"
 
-namespace Gui
+namespace App
 {
   namespace State
   {

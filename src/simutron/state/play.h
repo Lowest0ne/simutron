@@ -3,7 +3,7 @@
 
 #include "state.h"
 
-namespace Gui
+namespace App
 {
   class App;
 

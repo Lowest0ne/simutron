@@ -1,6 +1,6 @@
 #include "simutron_app.h"
 
-namespace Gui
+namespace App
 {
   App::App( int argc, char** argv, const Glib::ustring& title, const int width, const int height )
     : m_app( Gtk::Application::create( argc, argv, "my.game.simutron" ) )

@@ -3,7 +3,7 @@
 
 #include <stack>
 
-namespace Gui
+namespace App
 {
   class App;
 

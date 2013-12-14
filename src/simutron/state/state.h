@@ -2,12 +2,12 @@
 #define SIMUTRON_STATE_H
 
 
-namespace Gui
+namespace App
 {
 
   class App;
   /**
-  * @namespace Gui::State
+  * @namespace App::State
   * @brief     Provide a namespace for all things state related
   */
   namespace State
