@@ -5,7 +5,8 @@
 
 #include <gtkmm/button.h>
 #include <gtkmm/menuitem.h>
-#include <gtkmm/menu.h>
+
+#include "simutron/gui/menu_label.h"
 
 namespace App
 {
@@ -24,8 +25,8 @@ namespace App
       private:
       Gtk::Button m_button; // this should be a "play" button
 
-      Gtk::MenuItem m_menu; // the menu's menu bar
-      Gtk::Menu item;       // menu's go into menu items
+      Gui::MenuLabel m_label; // This is a menu bar label
+      Gtk::MenuItem  m_item;  // A test item for functionality
 
       Menu( App&, Manager& );
       virtual ~Menu( void );

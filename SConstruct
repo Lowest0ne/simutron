@@ -17,5 +17,6 @@ sim_env.Append(
 sim_env.Append( LINKFLAGS = '-Wl,-rpath=./lib' )
 sim_env.Program('simutron',
   Glob( 'src/simutron/*.cpp' ) +
-  Glob( 'src/simutron/state/*.cpp' )
+  Glob( 'src/simutron/state/*.cpp' )  +
+  Glob( 'src/simutron/gui/*.cpp' )
 )
