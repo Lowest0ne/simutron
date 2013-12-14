@@ -21,7 +21,11 @@ namespace Gui
     * @note  It is undecided whether its member variables should be static
     *        As this would require less passing around references.
     * @note  It is undecided whether states should include gui elements,
-    *        or contain instances of views.
+    *        or contain instances of views.  Currently, the idea is that states
+    *        will contain instances of gui elements needed to change states,
+    *        but then contain instances of views that are non state related.
+    *        For example, a City's budget has no ability to change state, and
+    *        is therefore not within the state namespace.
     */
     class State
     {
