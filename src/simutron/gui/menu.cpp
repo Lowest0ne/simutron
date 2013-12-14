@@ -4,7 +4,7 @@
 
 namespace Gui
 {
-  /*MENU LABEL*****************************************************************/
+  /*LABEL*****************************************************************/
   Menu::Label::Label( const std::string& label )
     :label( label )
   {
@@ -26,7 +26,7 @@ namespace Gui
     label.hide();
   }
 
-  /*MENU LABELS****************************************************************/
+  /*MENU ****************************************************************/
   Menu::~Menu( void )
   {
     for ( auto& label: labels ) delete label;

@@ -1,7 +1,7 @@
 import os
 
 def env():
-  return Environment( CXXFLAGS='-g -std=c++11 -Wall -Wextra -pedantic -Werror' )
+  return Environment( CXXFLAGS='-g -std=c++11 -Wall -Wextra -pedantic' )
 
 lib_env = env()
 lib_env.SharedLibrary('./lib/simutron', Glob( 'src/libsimutron/*.cpp' ))
@@ -18,5 +18,6 @@ sim_env.Append( LINKFLAGS = '-Wl,-rpath=./lib' )
 sim_env.Program('simutron',
   Glob( 'src/simutron/*.cpp' ) +
   Glob( 'src/simutron/state/*.cpp' )  +
-  Glob( 'src/simutron/gui/*.cpp' )
+  Glob( 'src/simutron/gui/*.cpp' ) +
+  Glob( 'src/simutron/view/*.cpp' )
 )

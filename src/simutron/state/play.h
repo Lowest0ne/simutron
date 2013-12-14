@@ -3,6 +3,7 @@
 
 #include "state.h"
 #include "libsimutron/city.h"
+#include "simutron/view/city.h"
 
 namespace App
 {
@@ -24,6 +25,7 @@ namespace App
       virtual ~Play( void );
 
       Simutron::City m_city;
+      View::City     m_city_view;
 
       protected:
       /**

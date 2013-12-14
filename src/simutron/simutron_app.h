@@ -3,9 +3,15 @@
 
 #include <gtkmm/application.h>
 #include <gtkmm/window.h>
-#include <gtkmm/box.h>
-#include <gtkmm/menubar.h>
-#include <gtkmm/statusbar.h>
+#include <gtkmm/builder.h>
+
+namespace Gtk
+{
+  class Statusbar;
+  class Box;
+  class MenuBar;
+  class Frame;
+}
 
 
 namespace Gui
@@ -15,7 +21,7 @@ namespace Gui
 
 /**
 * @namespace App
-* @brief     Proivde a namespace for the Gtk gui
+* @brief     Provide a namespace for the Gtk gui
 */
 namespace App
 {
@@ -23,16 +29,22 @@ namespace App
   * @class App::App
   * @brief The entry point to graphical simutron.
   *        Provides window and basic layout.
+  * @note  This class provides a menu bar, an empty frame, and a status bar
+  *        To any class, currently State, that may want to spruce them up
+  *        Menus are currently built programatically.
   */
   class App
   {
     private:
-    Glib::RefPtr< Gtk::Application >    m_app;
-    Gtk::Window                      m_window;
-    Gtk::Box                            m_box;
-    Gtk::MenuBar                    m_menubar;
-    Gtk::Box                         m_layout;
-    Gtk::Statusbar                m_statusbar;
+    Glib::RefPtr< Gtk::Application >     m_app;
+    Gtk::Window                       m_window;
+    Glib::RefPtr< Gtk::Builder >     m_builder;
+
+    // Non dynamic pointers.  They are derived from a ui file
+    Gtk::Box     *m_main_display;
+    Gtk::MenuBar      *m_menubar;
+    Gtk::Frame          *m_frame;
+    Gtk::Statusbar  *m_statusbar;
 
     public:
     /**
@@ -60,15 +72,15 @@ namespace App
     */
     void appendMenu( Gui::Menu& );
     /**
-    * @fn     Gtk::Box& layout( void )
-    * @return The Application's layout
+    * @fn     Gtk::Frame& frame( void )
+    * @return The Application's frame
     */
-    Gtk::Box& layout( void ){ return m_layout; }
+    Gtk::Frame& frame( void );
     /**
     * @fn     Gtk::Statusbar& statusBar( void )
     * @return The Application's status
     */
-    Gtk::Statusbar& statusBar( void ){ return m_statusbar; }
+    Gtk::Statusbar& statusBar( void );
     /**
     * @fn    void quit( void )
     * @brief Shutdown the application

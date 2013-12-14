@@ -1,27 +1,27 @@
 #include "simutron_app.h"
 #include "simutron/gui/menu.h"
 
+#include <gtkmm/box.h>
+#include <gtkmm/statusbar.h>
+#include <gtkmm/menubar.h>
+#include <gtkmm/frame.h>
+
 namespace App
 {
   App::App( int argc, char** argv, const Glib::ustring& title, const int width, const int height )
     : m_app( Gtk::Application::create( argc, argv, "my.game.simutron" ) )
-    , m_box( Gtk::Orientation::ORIENTATION_VERTICAL )
+    , m_builder( Gtk::Builder::create_from_file("res/views/main_window.glade") )
   {
     m_window.set_title( title );
     m_window.set_default_size( width, height );
 
-    m_box.add( m_menubar );
-    m_menubar.show();
+    m_builder->get_widget( "main_display", m_main_display );
+    m_builder->get_widget( "menubar",      m_menubar      );
+    m_builder->get_widget( "layout",       m_frame        );
+    m_builder->get_widget( "statusbar",    m_statusbar    );
 
-    m_layout.set_vexpand( true );
-    m_box.add( m_layout );
-    m_layout.show();
-
-    m_box.add( m_statusbar );
-    m_statusbar.show();
-
-    m_window.add( m_box );
-    m_box.show();
+    m_window.add( *m_main_display );
+    m_main_display->show();
   }
 
   App::~App( void )
@@ -36,7 +36,17 @@ namespace App
   void App::appendMenu( Gui::Menu& menu )
   {
     for ( auto& item: menu.labels )
-      m_menubar.append( item->label );
+      m_menubar->append( item->label );
+  }
+
+  Gtk::Frame& App::frame( void )
+  {
+    return *m_frame;
+  }
+
+  Gtk::Statusbar& App::statusBar( void )
+  {
+    return *m_statusbar;
   }
 
   void App::quit( void )
