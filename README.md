@@ -1,11 +1,12 @@
 # Simutron
 
-A game that I am making
+A game that I am making.
 
 ## Current activity
 
-The current activity is being done on the gtkmm front end, so be sure to check
-that branch out.
+Working on getting a 2d tile system set up, as well as timed city updates.
+
+Thinking about writing a manual, but the game is so simple...
 
 ## Installation
 
@@ -28,4 +29,4 @@ Documentation can be produced using doxygen
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-Please note that libsimutron is logic, and have no idea what it is to be viewed.
+Please keep styling the same, no tabs.
