@@ -10,7 +10,7 @@
 namespace View
 {
   City::City( void )
-    : m_builder( Gtk::Builder::create_from_file( "res/views/city.glade" ) )
+    : View( "res/views/city.glade" )
   {
     m_builder->get_widget( "box1", m_box );
   }
