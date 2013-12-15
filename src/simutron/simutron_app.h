@@ -10,7 +10,6 @@ namespace Gtk
   class Statusbar;
   class Box;
   class MenuBar;
-  class Frame;
 }
 
 
@@ -43,7 +42,7 @@ namespace App
     // Non dynamic pointers.  They are derived from a ui file
     Gtk::Box     *m_main_display;
     Gtk::MenuBar      *m_menubar;
-    Gtk::Frame          *m_frame;
+    Gtk::Box    *m_child_display;  // Boxes allow more than one child widget
     Gtk::Statusbar  *m_statusbar;
 
     public:
@@ -72,15 +71,16 @@ namespace App
     */
     void appendMenu( Gui::Menu& );
     /**
-    * @fn     Gtk::Frame& frame( void )
-    * @return The Application's frame
+    * @fn     void pushBox( Gtk::Box& widget )
+    * @return Add a widget to the child display
+    * @todo   Figure out if this can be const
     */
-    Gtk::Frame& frame( void );
+    void pushBox( Gtk::Box& );
     /**
-    * @fn     Gtk::Statusbar& statusBar( void )
-    * @return The Application's status
+    * @fn     void status( const std::string& str )
+    * @brief  Set the message in the status bar
     */
-    Gtk::Statusbar& statusBar( void );
+    void status( const std::string& );
     /**
     * @fn    void quit( void )
     * @brief Shutdown the application

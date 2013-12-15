@@ -1,11 +1,20 @@
 #ifndef SIMUTRON_VIEW_CITY_H
 #define SIMUTRON_VIEW_CITY_H
 
-#include <gtkmm.h>
+#include <gtkmm/builder.h>
+#include <gtkmm/toolbutton.h>
+
+#include <string>
+#include <cstdint>
 
 namespace Simutron
 {
   class City;
+}
+
+namespace Gtk
+{
+  class Box;
 }
 
 namespace View
@@ -13,21 +22,29 @@ namespace View
   class City
   {
     private:
-    Simutron::City& m_city;
 
-    Gtk::Box* m_box;
-    Gtk::Toolbar* m_toolbar;
+    Glib::RefPtr< Gtk::Builder > m_builder;
+    Gtk::Box*                        m_box;
 
-    Gtk::ToolButton m_button;
+    void updateLabel( const Glib::ustring&, const std::uint32_t );
 
     public:
-    City( Simutron::City& );
+    City( void );
     virtual ~City( void );
 
     void show( void );
     void hide( void );
 
+    void updateData( const Simutron::City& );
     Gtk::Box& layout( void );
+
+    template< typename T >
+    void btnConnect( const Glib::ustring& value, T func )
+    {
+      Gtk::ToolButton *btn;
+      m_builder->get_widget( value, btn );
+      btn->signal_clicked().connect( func );
+    }
   };
 }
 

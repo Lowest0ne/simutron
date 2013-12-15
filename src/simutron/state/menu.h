@@ -2,6 +2,12 @@
 #define SIMUTRON_STATE_MENU_H
 
 #include "state.h"
+#include <gtkmm/builder.h>
+
+namespace Gtk
+{
+  class Box;
+}
 
 namespace App
 {
@@ -21,6 +27,9 @@ namespace App
 
       Menu( App&, Manager& );
       virtual ~Menu( void );
+
+      Glib::RefPtr< Gtk::Builder > m_builder;
+      Gtk::Box *m_box;
 
       protected:
       /**

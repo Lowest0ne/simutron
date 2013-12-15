@@ -44,6 +44,9 @@ namespace App
 
       void init( void );
       void quit( void );
+
+      void btnZone( void );
+      void btnUpdate( void );
     };
   }
 }

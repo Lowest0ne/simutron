@@ -15,10 +15,10 @@ namespace App
     m_window.set_title( title );
     m_window.set_default_size( width, height );
 
-    m_builder->get_widget( "main_display", m_main_display );
-    m_builder->get_widget( "menubar",      m_menubar      );
-    m_builder->get_widget( "layout",       m_frame        );
-    m_builder->get_widget( "statusbar",    m_statusbar    );
+    m_builder->get_widget( "main_display", m_main_display  );
+    m_builder->get_widget( "menubar",      m_menubar       );
+    m_builder->get_widget( "layout",       m_child_display );
+    m_builder->get_widget( "statusbar",    m_statusbar     );
 
     m_window.add( *m_main_display );
     m_main_display->show();
@@ -39,14 +39,14 @@ namespace App
       m_menubar->append( item->label );
   }
 
-  Gtk::Frame& App::frame( void )
+  void App::pushBox( Gtk::Box& box )
   {
-    return *m_frame;
+    m_child_display->add( box );
   }
 
-  Gtk::Statusbar& App::statusBar( void )
+  void App::status( const std::string& str )
   {
-    return *m_statusbar;
+    m_statusbar->push( str );
   }
 
   void App::quit( void )
