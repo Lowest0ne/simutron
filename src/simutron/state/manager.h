@@ -44,7 +44,7 @@ namespace App
       */
       void startState( State& );
       /**
-      * @fn    void resumeCurrent( void )
+      * @fn    void resumeState( void )
       * @brief Resume the state on the top of the stack
       */
       void resumeState( void );
@@ -52,7 +52,7 @@ namespace App
       public:
       /**
       * @fn    Manager( void )
-      * @breif Construct a State manager
+      * @brief Construct a State manager
       */
       Manager( void );
       virtual ~Manager( void );

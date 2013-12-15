@@ -15,15 +15,11 @@ namespace App
       : State( app, manager )
       , m_city( city )
     {
-      m_menu.add( "File", "Main Menu", sigc::mem_fun( *this, &Play::mainMenu ));
-      m_menu.add( "File", "Quit", sigc::mem_fun( m_app, &App::quit ) );
-      m_app.appendMenu( m_menu );
+      connectSignals();
+      loadGui();
 
-      m_city_view.btnConnect( "btn_zone", sigc::mem_fun( *this, &Play::btnZone ));
-      m_city_view.btnConnect( "btn_update", sigc::mem_fun( *this, &Play::btnUpdate ));
-
-      m_app.pushBox( m_city_view.layout() );
-
+      // This function really doesn't belong here,
+      // but the way a city deals with growables needs to be fixed first
       m_city.addGrowable( Simutron::Growable( 10 ) );
     }
 
@@ -67,6 +63,21 @@ namespace App
     {
       m_city.update();
       m_city_view.updateData( m_city );
+    }
+
+    void Play::loadGui( void )
+    {
+      m_app.appendMenu( m_menu );
+      m_app.pushBox( m_city_view.layout() );
+    }
+
+    void Play::connectSignals( void )
+    {
+      m_menu.add( "File", "Main Menu", sigc::mem_fun( *this, &Play::mainMenu ));
+      m_menu.add( "File", "Quit",      sigc::mem_fun( m_app, &App::quit ));
+
+      m_city_view.btnConnect( "btn_zone",   sigc::mem_fun( *this, &Play::btnZone ));
+      m_city_view.btnConnect( "btn_update", sigc::mem_fun( *this, &Play::btnUpdate ));
     }
   }
 }

@@ -10,13 +10,13 @@
 namespace Gui
 {
   /**
-  * @struct Menu
+  * @struct Gui::Menu
   * @brief  A way to hold more than one Label
   */
   struct Menu
   {
     /**
-    * @struct Menu::Label
+    * @struct Gui::Menu::Label
     * @brief  Gtk::MenuBars need Gtk::MenuItems, which need to be paired
     *         with a Gtk::Menu to be on the top of the MenuBar...
     */
@@ -26,7 +26,9 @@ namespace Gui
       Gtk::Menu      menu; //!< The container to hold child items
 
       /**
-      * @fn     Label( const std::string& label )
+      * @fn    Label( const std::string& label )
+      * @brief Construct a label/menu pair
+      * @param label The label of the button
       */
       Label( const std::string& );
       virtual ~Label( void );
@@ -44,7 +46,8 @@ namespace Gui
     };
 
     std::vector< Label* > labels;         //!< The container for Labels
-    std::vector< Gtk::MenuItem* > items;  //!< The container for MenuItems
+    std::vector< Gtk::MenuItem* > items;  /*!< The container for MenuItems
+                                               Things like New, Save, etc */
 
     virtual ~Menu( void );
 
@@ -71,7 +74,7 @@ namespace Gui
     */
     Label* find( const std::string& );
     /**
-    * @fn void add( const std::string label, const std::string entry, T& func )
+    * @fn void add( const std::string& label, const std::string& entry, T func )
     * @brief Add a sub menu entry to a lable: New, Save, Load, Quit etc
     * @param label The Label to add the entry to
     * @param entry The name of the entry
