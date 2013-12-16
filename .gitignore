@@ -13,3 +13,9 @@
 
 # Ignore documentation
 /docs/
+
+# Ignore Code Block files
+/*.layout
+/bin/
+/obj/
+/*.depend
