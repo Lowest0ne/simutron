@@ -15,7 +15,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="bin/debug/liblibsimutron.so" />
+					<Add library="bin/debug/libsimutron.so" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -28,7 +28,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="bin/release/liblibsimutron.so" />
+					<Add library="bin/release/libsimutron.so" />
 				</Linker>
 			</Target>
 		</Build>

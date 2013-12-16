@@ -15,7 +15,8 @@
 /docs/
 
 # Ignore Code Block files
-/*.layout
 /bin/
 /obj/
+/*.layout
 /*.depend
+/*.cbTemp
